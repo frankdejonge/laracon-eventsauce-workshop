@@ -1,0 +1,4 @@
+---
+namespace: CatShelter\Intake
+commands:
+    StartIntakeForCat:

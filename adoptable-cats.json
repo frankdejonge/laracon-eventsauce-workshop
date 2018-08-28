@@ -1,0 +1,90 @@
+[
+    {
+        "id": "a1dc4644-a368-4cab-b712-2f87d2863a0c",
+        "name": "Jasmine",
+        "color": "red",
+        "breed": "Ukrainian Levkoy",
+        "gender": "male",
+        "date_of_birth": "2018-11-09"
+    },
+    {
+        "id": "b07f2fa0-4183-4409-a9ea-c3a5422cb027",
+        "name": "Poocat",
+        "color": "white",
+        "breed": "Cornish Rex",
+        "gender": "female",
+        "date_of_birth": "2017-11-11"
+    },
+    {
+        "id": "e050dbd5-6afe-4d7e-b01d-039e7e85fd6d",
+        "name": "Butterscotch",
+        "color": "grey",
+        "breed": "Peterbald",
+        "gender": "male",
+        "date_of_birth": "2015-07-30"
+    },
+    {
+        "id": "d8ae6f8b-046e-4d25-8869-5d78880d81ff",
+        "name": "Tucker",
+        "color": "black-white",
+        "breed": "Egyptian Mau",
+        "gender": "female",
+        "date_of_birth": "2011-02-04"
+    },
+    {
+        "id": "155ad242-aecf-4487-aba0-e5e3ca1111dc",
+        "name": "Bowser",
+        "color": "black",
+        "breed": "Turkish Angora",
+        "gender": "male",
+        "date_of_birth": "2017-09-01"
+    },
+    {
+        "id": "f064544f-96ff-481c-b51e-75cceec438ef",
+        "name": "Martin",
+        "color": "grey-white",
+        "breed": "Birman",
+        "gender": "female",
+        "date_of_birth": "2012-06-09"
+    },
+    {
+        "id": "83aadfda-68ca-4cb7-9aba-8baff1a51c30",
+        "name": "Merlin",
+        "color": "brown",
+        "breed": "Savannah",
+        "gender": "male",
+        "date_of_birth": "2009-04-16"
+    },
+    {
+        "id": "d49aac89-e2d3-4b54-a81a-bfcf94818ee2",
+        "name": "Oreo",
+        "color": "white-spotted",
+        "breed": "Exotic Shorthair",
+        "gender": "female",
+        "date_of_birth": "2012-06-07"
+    },
+    {
+        "id": "f2e12a45-88ce-4f22-bcaa-8e9e525fcc7b",
+        "name": "Clarence",
+        "color": "brown-black",
+        "breed": "Dwarf cat",
+        "gender": "male",
+        "date_of_birth": "2009-08-07"
+    },
+    {
+        "id": "13a344aa-ff29-4a8a-b7aa-ca3e7840733a",
+        "name": "Prince",
+        "color": "brown-grey",
+        "breed": "Selkirk Rex",
+        "gender": "female",
+        "date_of_birth": "2008-01-01"
+    },
+    {
+        "id": "48c0c89d-2966-43bf-8220-783383abf23b",
+        "name": "Beage",
+        "color": "brown-white",
+        "breed": "American Curl",
+        "gender": "male",
+        "date_of_birth": "2017-03-10"
+    }
+]

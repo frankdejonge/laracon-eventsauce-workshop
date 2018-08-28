@@ -1,0 +1,42 @@
+version: "3"
+services:
+    php:
+        image: frankdejonge/laracon-eventsourcing-php
+        volumes:
+            - ./:/var/www/application:consistent
+        container_name: php
+        build:
+            context: ./
+            dockerfile: docker/php/Dockerfile
+            args:
+                TIMEZONE: ${TIMEZONE}
+    nginx:
+        image: frankdejonge/laracon-eventsourcing-nginx
+        container_name: frontend
+        build:
+            context: ./
+            dockerfile: docker/nginx/Dockerfile
+        volumes:
+            - ./public:/var/www/application/public:cached
+        ports:
+            - 80:80
+    redis:
+        image: redis:4-alpine
+        container_name: redis
+    mysql:
+        image: mysql:5.7
+        container_name: mysql
+        environment:
+            MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+            MYSQL_DATABASE: ${DB_DATABASE}
+            MYSQL_USER: ${DB_USERNAME}
+            MYSQL_PASSWORD: ${DB_PASSWORD}
+        ports:
+            - 3306:3306
+        volumes:
+            - ./.data/db:/var/lib/mysql:delegated
+    mailcatcher:
+        image: tophfr/mailcatcher
+        ports:
+            - "1080:80"
+            - "1025:25"
