@@ -3,7 +3,7 @@
 namespace App\CatShelter\Intake;
 
 use App\CatShelter\AdoptableCats\AdoptableCat;
-use App\CatShelter\AdoptableCats\AdoptableCatsProjection;
+use App\CatShelter\AdoptableCats\AdoptableCatsProjector;
 use App\CatShelter\AdoptableCats\AdoptableCatsRepository;
 use App\CatShelter\CatInformation;
 use Illuminate\Support\Facades\DB;
@@ -74,7 +74,7 @@ class AdmitCatToShelterTest extends IntakeProcessTestCase
         $this->adoptableCats = new AdoptableCatsRepository();
 
         return [
-            new AdoptableCatsProjection($this->adoptableCats),
+            new AdoptableCatsProjector($this->adoptableCats),
         ];
     }
 

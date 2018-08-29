@@ -9,7 +9,7 @@ use EventSauce\EventSourcing\Consumer;
 use EventSauce\EventSourcing\Message;
 use Ramsey\Uuid\Uuid;
 
-class AdoptableCatsProjection implements Consumer
+class AdoptableCatsProjector implements Consumer
 {
     /**
      * @var AdoptableCatsRepository
