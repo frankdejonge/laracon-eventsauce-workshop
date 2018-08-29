@@ -1,11 +1,12 @@
 <?php
 
+use App\CatShelter\AdoptableCats\AdoptableCatsProjector;
 use App\CatShelter\Intake\IntakeProcess;
 
 return [
     'aggregate_root' => IntakeProcess::class,
     'sync_consumers' => [
-        // ...
+         AdoptableCatsProjector::class,
     ],
     'async_consumers' => [
         // ...

@@ -1,6 +1,7 @@
 <?php
 
 use App\CatShelter\CatInformation;
+use App\EventSauce\EventSauceServiceProvider;
 
 return [
 
@@ -148,6 +149,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        EventSauceServiceProvider::class,
 
         /*
          * Package Service Providers...

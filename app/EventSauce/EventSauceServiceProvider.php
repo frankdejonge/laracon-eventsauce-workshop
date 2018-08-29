@@ -2,6 +2,8 @@
 
 namespace App\EventSauce;
 
+use App\CatShelter\Intake\IntakeProcessCommandHandler;
+use App\CatShelter\NationalCatRegistry\CatInformationRegistry;
 use EventSauce\EventSourcing\AggregateRootRepository;
 use EventSauce\EventSourcing\ConstructingAggregateRootRepository;
 use EventSauce\EventSourcing\MessageDispatcherChain;
@@ -17,6 +19,13 @@ class EventSauceServiceProvider extends ServiceProvider
 {
     public function register()
     {
+        $this->app->bind(IntakeProcessCommandHandler::class, function (Container $container) {
+            return new IntakeProcessCommandHandler(
+                $container->make(AggregateRootRepository::class),
+                $container->make(CatInformationRegistry::class)
+            );
+        });
+
         $this->app->bind(AggregateRootRepository::class, function (Container $app) {
             return new ConstructingAggregateRootRepository(
                 config('eventsauce.aggregate_root'),

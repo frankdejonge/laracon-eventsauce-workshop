@@ -33,7 +33,7 @@ class LaravelMessageRepository implements MessageRepository
             $payload = json_encode($serialized);
             $timeOfRecording = $serialized['headers'][Header::TIME_OF_RECORDING];
             $aggregateRootId = $serialized['headers'][Header::AGGREGATE_ROOT_ID] ?? null;
-            DB::insert("INSERT INTO eventsauce_messages
+            DB::insert("INSERT INTO domain_messages
                           (event_id, event_type, aggregate_root_id, time_of_recording, payload)
                           VALUES (?, ?, ?, ?, ?)
             ", [$eventId, $type, $aggregateRootId, $timeOfRecording, $payload]);
@@ -43,7 +43,7 @@ class LaravelMessageRepository implements MessageRepository
     public function retrieveAll(AggregateRootId $id): Generator
     {
         $payloads =  DB::select(
-            'SELECT payload FROM eventsauce_messages WHERE aggregate_root_id = ? ORDER BY time_of_recording ASC',
+            'SELECT payload FROM domain_messages WHERE aggregate_root_id = ? ORDER BY time_of_recording ASC',
             [$id->toString()]
         );
 

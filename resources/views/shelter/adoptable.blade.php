@@ -37,7 +37,6 @@
                             <th scope="row">{{ $cat->name() ?: 'Unknown Name' }}</th>
                             <th scope="row">{{ $cat->breed() }}</th>
                             <td>{{ $cat->color() }}</td>
-                            <td>{{ $cat->gender() }}</td>
                             <td>
                                 <button class="btn btn-primary btn-sm">Adopt!</button>
                             </td>
