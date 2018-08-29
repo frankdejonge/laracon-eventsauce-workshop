@@ -37,4 +37,9 @@ class TagOfCat implements JsonSerializable
     {
         return new static(Uuid::fromString($identifier));
     }
+
+    public static function create(): TagOfCat
+    {
+        return new static(Uuid::uuid4());
+    }
 }

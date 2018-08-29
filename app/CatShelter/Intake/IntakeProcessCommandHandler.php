@@ -2,6 +2,7 @@
 
 namespace App\CatShelter\Intake;
 
+use App\CatShelter\NationalCatRegistry\CatInformationRegistry;
 use EventSauce\EventSourcing\AggregateRootRepository;
 
 class IntakeProcessCommandHandler
@@ -11,9 +12,17 @@ class IntakeProcessCommandHandler
      */
     private $repository;
 
-    public function __construct(AggregateRootRepository $repository)
-    {
+    /**
+     * @var CatInformationRegistry
+     */
+    private $regiCat;
+
+    public function __construct(
+        AggregateRootRepository $repository,
+        CatInformationRegistry $regiCat
+    ) {
         $this->repository = $repository;
+        $this->regiCat = $regiCat;
     }
 
     /**
@@ -26,10 +35,16 @@ class IntakeProcessCommandHandler
         /** @var IntakeProcess $aggregateRoot */
         $aggregateRoot = $this->repository->retrieve($aggregateRootId);
 
-        if ($command instanceof AdmitCatToShelter) {
-            $aggregateRoot->admitCatToShelter($command);
+        try {
+            if ($command instanceof AdmitCatToShelter) {
+                $aggregateRoot->admitCatToShelter($command);
+            } elseif ($command instanceof RegisterTagOfCat) {
+                $aggregateRoot->registerTagOfCat($command);
+            } elseif ($command instanceof LookupRegiCatRegistration) {
+                $aggregateRoot->lookupRegiCatRegistration($this->regiCat);
+            }
+        } finally {
+            $this->repository->persist($aggregateRoot);
         }
-
-        $this->repository->persist($aggregateRoot);
     }
 }

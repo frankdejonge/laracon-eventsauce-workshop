@@ -8,6 +8,18 @@ types:
             {param}->toString()
         deserializer: >
             IntakeProcessIdentifier::fromString({param})
+    tagOfCat:
+        type: \App\CatShelter\TagOfCat
+        serializer: >
+            {param}->toString()
+        deserializer: >
+            \App\CatShelter\TagOfCat::fromString({param})
+    dateOfBirth:
+        type: \App\CatShelter\DateOfBirth
+        serializer: >
+            {param}->jsonSerialize()
+        deserializer: >
+            \App\CatShelter\DateOfBirth::createFromString({param})
 
 commands:
     AdmitCatToShelter:
@@ -17,6 +29,13 @@ commands:
             nameOfTheCat: string
             breed: string
             color: string
+    RegisterTagOfCat:
+        fields:
+            identifier: intakeProcessIdentifier
+            tagOfCat: tagOfCat
+    LookupRegiCatRegistration:
+        fields:
+            identifier: intakeProcessIdentifier
 
 events:
     CatWasBroughtIn:
@@ -26,5 +45,17 @@ events:
             color: string
     CatWasBroughtInByOwner: []
     HomelessCatWasBroughtIn: []
+    TagOfCatWasScanned:
+        fields:
+            tagOfCat: tagOfCat
+    RegiCatSystemWasNotAvailable: []
+    OwnerWasFoundInRegiCat:
+        fields:
+            name: string
+            breed: string
+            color: string
+            dateOfBirth: dateOfBirth
+    OwnerWasNotFoundInRegiCat: []
+
 
 
