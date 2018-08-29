@@ -1,4 +1,30 @@
 ---
-namespace: CatShelter\Intake
+namespace: App\CatShelter\Intake
+
+types:
+    intakeProcessIdentifier:
+        type: IntakeProcessIdentifier
+        serializer: >
+            {param}->toString()
+        deserializer: >
+            IntakeProcessIdentifier::fromString({param})
+
 commands:
-    StartIntakeForCat:
+    AdmitCatToShelter:
+        fields:
+            identifier: intakeProcessIdentifier
+            broughtInByOwner: bool
+            nameOfTheCat: string
+            breed: string
+            color: string
+
+events:
+    CatWasBroughtIn:
+        fields:
+            nameOfTheCat: string
+            breed: string
+            color: string
+    CatWasBroughtInByOwner: []
+    HomelessCatWasBroughtIn: []
+
+

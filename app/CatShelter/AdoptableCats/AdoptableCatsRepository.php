@@ -23,11 +23,11 @@ class AdoptableCatsRepository
     public function add(CatInformation $catInformation)
     {
         DB::table('adoptable_cats')->insert([
-            'tag_of_cat'      => $catInformation->id()->toString(),
-            'breed'   => $catInformation->breed(),
-            'gender'  => $catInformation->gender(),
-            'color'   => $catInformation->color(),
-            'payload' => json_encode($catInformation),
+            'tag_of_cat' => $catInformation->id()->toString(),
+            'breed'      => $catInformation->breed(),
+            'gender'     => $catInformation->gender(),
+            'color'      => $catInformation->color(),
+            'payload'    => json_encode($catInformation),
         ]);
     }
 }
