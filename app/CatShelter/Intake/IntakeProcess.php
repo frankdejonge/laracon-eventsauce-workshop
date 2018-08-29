@@ -49,6 +49,8 @@ class IntakeProcess implements AggregateRoot
 
     public function lookupRegiCatRegistration(CatInformationRegistry $regiCat)
     {
+        $this->guardAgainstUnscannedCat();
+
         try {
             $catInformation = $regiCat->lookup($this->tagOfCat);
 
@@ -61,6 +63,13 @@ class IntakeProcess implements AggregateRoot
         } catch (SorryCatInformationNotFound $exception) {
             $this->recordThat(new OwnerWasNotFoundInRegiCat());
             throw $exception;
+        }
+    }
+
+    protected function guardAgainstUnscannedCat()
+    {
+        if ( ! $this->tagOfCat instanceof TagOfCat) {
+            throw new SorryTagOfCatWasNotScanned();
         }
     }
 

@@ -101,7 +101,7 @@ class CatInformation implements JsonSerializable
             $payload['name'],
             $payload['color'],
             $payload['breed'],
-            $payload['gender'],
+            $payload['gender'] ?? 'female',
             DateOfBirth::createFromString($payload['date_of_birth'])
         );
     }

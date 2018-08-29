@@ -44,4 +44,14 @@ class LookupRegiCatRegistrationTest extends IntakeProcessTestCase
             ->then(new OwnerWasNotFoundInRegiCat())
             ->expectToFail(new SorryCatInformationNotFound());
     }
+
+    /**
+     * @test
+     */
+    public function guarding_against_not_scanning_the_tag()
+    {
+        $this->when(new LookupRegiCatRegistration(
+            $this->aggregateRootId()
+        ))->expectToFail(new SorryTagOfCatWasNotScanned());
+    }
 }

@@ -2,30 +2,29 @@
 
 namespace App\CatShelter\AdoptableCats;
 
-use App\CatShelter\CatInformation;
 use Illuminate\Support\Facades\DB;
 use function array_map;
 
 class AdoptableCatsRepository
 {
     /**
-     * @return CatInformation[]
+     * @return AdoptableCat[]
      */
     public function list(): array
     {
         $rows = DB::table('adoptable_cats')->orderBy('id', 'DESC')->get()->all();
 
         return array_map(function ($row) {
-            return CatInformation::fromPayload(json_decode($row->payload, true));
+            return AdoptableCat::fromPayload(json_decode($row->payload, true));
         }, $rows);
     }
 
-    public function add(CatInformation $catInformation)
+    public function add(AdoptableCat $catInformation)
     {
         DB::table('adoptable_cats')->insert([
             'tag_of_cat' => $catInformation->id()->toString(),
             'breed'      => $catInformation->breed(),
-            'gender'     => $catInformation->gender(),
+            'gender'     => 'female',
             'color'      => $catInformation->color(),
             'payload'    => json_encode($catInformation),
         ]);
